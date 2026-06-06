@@ -1,0 +1,307 @@
+---
+const title = "Mentions légales — P'tit Déj";
+const description = "Mentions légales de P'tit Déj (ptidej.fr) : éditeur, hébergeur, propriété intellectuelle.";
+const canonical = "https://ptidej.fr/mentions-legales";
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#D97706" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --amber-50:  #FFFBEB;
+      --amber-100: #FEF3C7;
+      --amber-400: #FBBF24;
+      --amber-500: #F59E0B;
+      --amber-600: #D97706;
+      --amber-700: #B45309;
+      --stone-50:  #FAFAF9;
+      --stone-100: #F5F5F4;
+      --stone-200: #E7E5E4;
+      --stone-400: #A8A29E;
+      --stone-600: #57534E;
+      --stone-700: #44403C;
+      --stone-900: #1C1917;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--stone-50);
+      color: var(--stone-900);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      background: rgba(250,250,249,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--stone-200);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--stone-900);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--amber-500);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .nav-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--amber-100);
+      color: var(--amber-700);
+      border: 1px solid var(--amber-400);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    /* CONTENT */
+    .page-content {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 5rem;
+    }
+
+    .page-breadcrumb {
+      font-size: 0.8rem;
+      color: var(--stone-400);
+      margin-bottom: 2rem;
+    }
+
+    .page-breadcrumb a {
+      color: var(--amber-600);
+      text-decoration: none;
+    }
+
+    .page-breadcrumb a:hover { text-decoration: underline; }
+
+    .page-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: -0.02em;
+      color: var(--stone-900);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-updated {
+      font-size: 0.85rem;
+      color: var(--stone-400);
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--stone-200);
+    }
+
+    .legal-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .legal-section h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--stone-900);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--amber-100);
+    }
+
+    .legal-section p {
+      font-size: 0.95rem;
+      color: var(--stone-700);
+      line-height: 1.75;
+      margin-bottom: 0.75rem;
+    }
+
+    .legal-section a {
+      color: var(--amber-600);
+      text-decoration: none;
+    }
+
+    .legal-section a:hover { text-decoration: underline; }
+
+    .info-block {
+      background: var(--white);
+      border: 1px solid var(--stone-200);
+      border-left: 4px solid var(--amber-400);
+      border-radius: 0 12px 12px 0;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .info-block p {
+      margin-bottom: 0.25rem;
+    }
+
+    .info-block p:last-child { margin-bottom: 0; }
+
+    /* FOOTER */
+    footer {
+      background: var(--stone-900);
+      color: var(--stone-400);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      color: var(--stone-400);
+      text-decoration: none;
+      margin: 0 0.75rem;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--amber-400); }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .page-content { padding: 6rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-dot"></span>
+      P'tit Déj
+    </a>
+    <span class="nav-badge">Bientôt disponible</span>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="page-content">
+    <p class="page-breadcrumb"><a href="/">Accueil</a> &rsaquo; Mentions légales</p>
+
+    <h1 class="page-title">Mentions légales</h1>
+    <p class="page-updated">Dernière mise à jour : juin 2026</p>
+
+    <div class="legal-section">
+      <h2>Éditeur du site</h2>
+      <p>Le site <strong>ptidej.fr</strong> est édité par :</p>
+      <div class="info-block">
+        <p><strong>DIADHIOU ABDOU</strong></p>
+        <p>Auto-entrepreneur</p>
+        <p>153 Rue de la Varende, 76320 Saint-Pierre-lès-Elbeuf</p>
+        <p>SIRET : 75298859200024</p>
+        <p>Email : <a href="mailto:contact@ptidej.fr">contact@ptidej.fr</a></p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <h2>Directeur de la publication</h2>
+      <p>Le directeur de la publication est <strong>DIADHIOU ABDOU</strong>.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Hébergeur</h2>
+      <p>Le site est hébergé par :</p>
+      <div class="info-block">
+        <p><strong>Vercel Inc.</strong></p>
+        <p>440 N Barranca Ave #4133</p>
+        <p>Covina, CA 91723, États-Unis</p>
+        <p>Site web : <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">vercel.com</a></p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        L'ensemble du contenu de ce site (textes, images, logos, code source) est la propriété exclusive de DIADHIOU ABDOU,
+        sauf mention contraire. Toute reproduction, représentation, modification ou exploitation, totale ou partielle,
+        sans autorisation écrite préalable est interdite et constitue une contrefaçon sanctionnée par le Code de la
+        propriété intellectuelle.
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Limitation de responsabilité</h2>
+      <p>
+        L'éditeur s'efforce de maintenir les informations publiées sur ce site à jour et exactes. Toutefois,
+        il ne saurait être tenu responsable des erreurs, omissions ou des résultats qui pourraient être obtenus
+        par un mauvais usage des informations publiées.
+      </p>
+      <p>
+        Les liens hypertextes présents sur ce site pointant vers des sites tiers sont proposés à titre
+        informatif. L'éditeur ne peut être tenu responsable du contenu de ces sites externes.
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Données personnelles</h2>
+      <p>
+        Le traitement des données personnelles collectées via ce site est détaillé dans notre
+        <a href="/politique-de-confidentialite">Politique de confidentialité</a>.
+      </p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/politique-de-confidentialite">Confidentialité</a>
+      <a href="mailto:contact@ptidej.fr">Contact</a>
+    </p>
+    <p style="margin-top: 0.75rem;">© 2026 P'tit Déj — Fait avec ☕ en France</p>
+  </footer>
+</body>
+</html>
