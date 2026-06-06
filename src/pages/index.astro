@@ -1,0 +1,778 @@
+---
+const title = "P'tit Déj — Fini l'Excel, vive les rotations équitables";
+const description = "Ton collègue amène toujours le café et toi jamais ? Ptidej génère des plannings de petits-déjeuners équitables en 2 minutes. Gratuit, sans prise de tête.";
+const canonical = "https://ptidej.fr";
+const ogImage = "https://ptidej.fr/og.png";
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="P'tit Déj" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- SEO extras -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="P'tit Déj" />
+  <meta name="theme-color" content="#D97706" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+
+  <!-- Données structurées -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "P'tit Déj",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "description": "Application web gratuite de planning de petits-déjeuners d'équipe avec rotations équitables automatiques.",
+    "url": "https://ptidej.fr",
+    "inLanguage": "fr"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --amber-50:  #FFFBEB;
+      --amber-100: #FEF3C7;
+      --amber-400: #FBBF24;
+      --amber-500: #F59E0B;
+      --amber-600: #D97706;
+      --amber-700: #B45309;
+      --stone-50:  #FAFAF9;
+      --stone-100: #F5F5F4;
+      --stone-200: #E7E5E4;
+      --stone-400: #A8A29E;
+      --stone-600: #57534E;
+      --stone-700: #44403C;
+      --stone-900: #1C1917;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--stone-50);
+      color: var(--stone-900);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ---- NOISE TEXTURE OVERLAY ---- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 1.5rem 4rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Gradient mesh background */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(251,191,36,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 90% 80%, rgba(217,119,6,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 10% 70%, rgba(251,191,36,0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero > * { position: relative; z-index: 1; }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      background: rgba(250,250,249,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--stone-200);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--stone-900);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--amber-500);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .nav-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--amber-100);
+      color: var(--amber-700);
+      border: 1px solid var(--amber-400);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    /* ---- EYEBROW ---- */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber-700);
+      background: var(--amber-50);
+      border: 1px solid var(--amber-200);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--amber-500);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ---- HEADLINE ---- */
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--stone-900);
+      max-width: 820px;
+      margin: 0 auto 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--amber-600);
+      position: relative;
+    }
+
+    h1 em::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--amber-400);
+      border-radius: 2px;
+      opacity: 0.5;
+    }
+
+    /* ---- SUBHEADLINE ---- */
+    .subhead {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--stone-600);
+      max-width: 560px;
+      line-height: 1.6;
+      margin: 0 auto 1rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .subhead strong {
+      color: var(--stone-900);
+      font-weight: 500;
+    }
+
+    /* ---- PAIN QUOTE ---- */
+    .pain-quote {
+      display: inline-block;
+      background: var(--white);
+      border: 1px solid var(--stone-200);
+      border-left: 4px solid var(--amber-500);
+      border-radius: 0 12px 12px 0;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--stone-700);
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      animation: fadeUp 0.6s 0.25s ease both;
+      max-width: 500px;
+    }
+
+    /* ---- FORM ---- */
+    .form-wrapper {
+      width: 100%;
+      max-width: 480px;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--white);
+      border: 2px solid var(--stone-200);
+      border-radius: 16px;
+      padding: 0.4rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-row:focus-within {
+      border-color: var(--amber-400);
+      box-shadow: 0 4px 24px rgba(245,158,11,0.15);
+    }
+
+    .form-row input[type="email"] {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--stone-900);
+      padding: 0.6rem 0.75rem;
+    }
+
+    .form-row input::placeholder { color: var(--stone-400); }
+
+    .btn-primary {
+      background: var(--amber-500);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      padding: 0.75rem 1.5rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+      flex-shrink: 0;
+    }
+
+    .btn-primary:hover { background: var(--amber-600); transform: scale(1.02); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--stone-400);
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+
+    .form-message {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-align: center;
+      min-height: 1.5rem;
+    }
+
+    .form-message.success { color: #16a34a; }
+    .form-message.error { color: #dc2626; }
+
+    /* ---- SOCIAL PROOF ---- */
+    .soon-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+
+    .soon-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--stone-500);
+      font-weight: 500;
+    }
+
+    .soon-icon {
+      font-size: 1rem;
+    }
+
+    /* ---- FEATURES ---- */
+    .features {
+      padding: 5rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber-600);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: -0.02em;
+      text-align: center;
+      color: var(--stone-900);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--stone-600);
+      max-width: 500px;
+      margin: 0 auto 3.5rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--stone-200);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .feature-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--stone-900);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-desc {
+      font-size: 0.9rem;
+      color: var(--stone-600);
+      line-height: 1.6;
+    }
+
+    /* ---- HOW IT WORKS ---- */
+    .how {
+      background: var(--stone-900);
+      color: var(--white);
+      padding: 5rem 1.5rem;
+    }
+
+    .how-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .how .section-label { color: var(--amber-400); }
+    .how .section-title { color: var(--white); }
+    .how .section-sub { color: var(--stone-400); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .step-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 3rem;
+      color: var(--amber-500);
+      line-height: 1;
+      opacity: 0.7;
+    }
+
+    .step-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+    }
+
+    .step-desc {
+      font-size: 0.875rem;
+      color: var(--stone-400);
+      line-height: 1.6;
+    }
+
+    /* ---- CTA FINAL ---- */
+    .cta-section {
+      padding: 6rem 1.5rem;
+      text-align: center;
+      background: var(--amber-50);
+      border-top: 1px solid var(--amber-100);
+    }
+
+    .cta-section h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      color: var(--stone-900);
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: var(--stone-600);
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--stone-900);
+      color: var(--stone-400);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    footer a {
+      color: var(--stone-400);
+      text-decoration: none;
+      margin: 0 0.75rem;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--amber-400); }
+
+    /* ---- ANIMATIONS ---- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .form-row { flex-direction: column; padding: 0.5rem; }
+      .btn-primary { width: 100%; text-align: center; }
+      .soon-badge { gap: 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-dot"></span>
+      P'tit Déj
+    </a>
+    <span class="nav-badge">Bientôt disponible</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="eyebrow">
+      <span class="eyebrow-dot"></span>
+      Lancement imminent
+    </span>
+
+    <h1>
+      Ton Excel foireux,<br />
+      c'est <em>terminé</em>.
+    </h1>
+
+    <p class="subhead">
+      C'est toujours les mêmes qui amènent le café ?<br />
+      <strong>Ptidej génère des rotations équitables en 2 minutes.</strong><br />
+      Gratuit, sans prise de tête.
+    </p>
+
+    <p class="pain-quote">
+      « C'est la 3ème fois que j'amène le p'tit déj et certains n'ont rien amené depuis des mois... »
+    </p>
+
+    <div class="form-wrapper">
+      <form class="form-row" id="waitlist-form" novalidate>
+        <input
+          type="email"
+          name="email"
+          id="email-input"
+          placeholder="ton@email.fr"
+          autocomplete="email"
+          required
+          aria-label="Ton adresse email"
+        />
+        <button type="submit" class="btn-primary" id="submit-btn">
+          Me prévenir
+        </button>
+      </form>
+      <p class="form-note">🔒 Aucun spam. Juste un email quand c'est prêt.</p>
+      <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="soon-badge">
+      <span class="soon-item"><span class="soon-icon">☕</span> 100% gratuit</span>
+      <span class="soon-item"><span class="soon-icon">⚡</span> Prêt en 2 minutes</span>
+      <span class="soon-item"><span class="soon-icon">📱</span> Mobile &amp; desktop</span>
+      <span class="soon-item"><span class="soon-icon">👥</span> Multi-équipes</span>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <p class="section-label">Pourquoi Ptidej</p>
+    <h2 class="section-title">Fini le planning qui fout le bordel</h2>
+    <p class="section-sub">Pensé pour les équipes qui s'apprécient et veulent garder le rituel du p'tit déj sans la prise de tête.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">⚖️</span>
+        <h3 class="feature-title">Rotations équitables</h3>
+        <p class="feature-desc">L'algorithme répartit les tours de façon juste, en tenant compte des absences et des congés. Personne ne se retrouve à amener le café trois fois de suite.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📅</span>
+        <h3 class="feature-title">Ta fréquence, tes règles</h3>
+        <p class="feature-desc">Chaque semaine, toutes les deux semaines, le vendredi matin... Tu définis le rythme de ton équipe et Ptidej génère le planning sur mesure.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">👥</span>
+        <h3 class="feature-title">Toute l'équipe synchronisée</h3>
+        <p class="feature-desc">Partage ton planning avec un simple code. Tout le monde voit qui amène quoi, en temps réel. Fini les "j'avais pas vu le message".</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📵</span>
+        <h3 class="feature-title">Zéro Excel. Zéro WhatsApp.</h3>
+        <p class="feature-desc">Plus de fichier partagé qui foire, plus de tableau qui se corrompt, plus de discussion interminable pour savoir à qui c'est le tour.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌙</span>
+        <h3 class="feature-title">Rythmes alternés bienvenus</h3>
+        <p class="feature-desc">Tu bosses en 2×8 ou en horaires décalés ? Ptidej gère les absences par roulement et adapte les tours automatiquement.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎁</span>
+        <h3 class="feature-title">Totalement gratuit</h3>
+        <p class="feature-desc">Ptidej est et restera gratuit. Pas de freemium, pas de carte bleue. Juste un outil pensé pour le lien humain au travail.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="how-inner">
+      <p class="section-label">Comment ça marche</p>
+      <h2 class="section-title">3 étapes, 2 minutes.</h2>
+      <p class="section-sub">Pas de tutoriel, pas de formation. Tu crées, tu partages, c'est géré.</p>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3 class="step-title">Crée ton équipe</h3>
+          <p class="step-desc">Ajoute tes collègues, définis la fréquence du p'tit déj et les préférences de l'équipe.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3 class="step-title">Génère le planning</h3>
+          <p class="step-desc">Ptidej calcule automatiquement les rotations équitables sur la période que tu choisis.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3 class="step-title">Partage &amp; profite</h3>
+          <p class="step-desc">Partage le lien à ton équipe. Tout le monde est synchronisé. Toi tu apportes les croissants quand c'est ton tour, point.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <h2>Prêt à en finir avec l'injustice du café ?</h2>
+    <p>Inscris-toi pour être parmi les premiers à tester Ptidej.</p>
+
+    <div class="form-wrapper" style="margin: 0 auto;">
+      <form class="form-row" id="waitlist-form-2" novalidate>
+        <input
+          type="email"
+          name="email"
+          id="email-input-2"
+          placeholder="ton@email.fr"
+          autocomplete="email"
+          required
+          aria-label="Ton adresse email"
+        />
+        <button type="submit" class="btn-primary" id="submit-btn-2">
+          Me prévenir
+        </button>
+      </form>
+      <p class="form-note">🔒 Aucun spam. Juste un email quand c'est prêt.</p>
+      <p class="form-message" id="form-message-2" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/politique-de-confidentialite">Confidentialité</a>
+      <a href="mailto:contact@ptidej.fr">Contact</a>
+    </p>
+    <p style="margin-top: 0.75rem;">© 2026 P'tit Déj — Fait avec ☕ en France</p>
+  </footer>
+
+  <script>
+    async function handleSubmit(formEl, inputEl, btnEl, msgEl) {
+      const email = inputEl.value.trim();
+      if (!email || !email.includes('@')) {
+        msgEl.textContent = 'Saisis une adresse email valide.';
+        msgEl.className = 'form-message error';
+        return;
+      }
+
+      btnEl.disabled = true;
+      btnEl.textContent = 'Inscription…';
+      msgEl.textContent = '';
+      msgEl.className = 'form-message';
+
+      try {
+        const res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          msgEl.textContent = data.already
+            ? '✅ Tu étais déjà inscrit(e) — on te préviendra !'
+            : '🎉 Parfait ! On te prévient dès l\'ouverture.';
+          msgEl.className = 'form-message success';
+          inputEl.value = '';
+        } else {
+          throw new Error(data.error || 'Erreur inconnue');
+        }
+      } catch (e) {
+        msgEl.textContent = 'Une erreur est survenue. Réessaie dans un instant.';
+        msgEl.className = 'form-message error';
+      } finally {
+        btnEl.disabled = false;
+        btnEl.textContent = 'Me prévenir';
+      }
+    }
+
+    // Formulaire hero
+    document.getElementById('waitlist-form').addEventListener('submit', e => {
+      e.preventDefault();
+      handleSubmit(
+        e.currentTarget,
+        document.getElementById('email-input'),
+        document.getElementById('submit-btn'),
+        document.getElementById('form-message')
+      );
+    });
+
+    // Formulaire CTA bas de page
+    document.getElementById('waitlist-form-2').addEventListener('submit', e => {
+      e.preventDefault();
+      handleSubmit(
+        e.currentTarget,
+        document.getElementById('email-input-2'),
+        document.getElementById('submit-btn-2'),
+        document.getElementById('form-message-2')
+      );
+    });
+  </script>
+</body>
+</html>
