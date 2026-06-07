@@ -11,8 +11,8 @@ export async function POST({ request }) {
       });
     }
 
-    const BREVO_API_KEY = import.meta.env.BREVO_API_KEY;
-    const BREVO_LIST_ID = Number(import.meta.env.BREVO_LIST_ID);
+    const BREVO_API_KEY = process.env.BREVO_API_KEY;
+    const BREVO_LIST_ID = Number(process.env.BREVO_LIST_ID);
 
     const res = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
