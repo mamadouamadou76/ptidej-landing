@@ -2,6 +2,8 @@ export const prerender = false;
 
 export async function POST({ request }) {
   try {
+    console.log('BREVO_API_KEY:', process.env.BREVO_API_KEY ? 'présente' : 'MANQUANTE');
+    console.log('BREVO_LIST_ID:', process.env.BREVO_LIST_ID);
     const { email } = await request.json();
 
     if (!email || !email.includes('@')) {
