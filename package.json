@@ -8,6 +8,8 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.16.0"
+    "@astrojs/vercel": "^10.0.8",
+    "astro": "^6.4.4",
+    "firebase-admin": "^13.10.0"
   }
 }
