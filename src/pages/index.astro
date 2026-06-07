@@ -208,12 +208,15 @@ const ogImage = "https://ptidej.fr/og.png";
     h1 {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: clamp(1.75rem, 5vw, 4.5rem);
+      font-size: clamp(1.8rem, 4vw, 3.5rem);
       line-height: 1.1;
       letter-spacing: -0.03em;
       color: var(--stone-900);
       max-width: 820px;
       margin: 0 auto 1.5rem;
+      word-break: normal;
+      overflow-wrap: break-word;
+      hyphens: auto;
       animation: fadeUp 0.6s 0.1s ease both;
     }
 
@@ -494,10 +497,12 @@ const ogImage = "https://ptidej.fr/og.png";
     .cta-section h2 {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
       letter-spacing: -0.02em;
       color: var(--stone-900);
       margin-bottom: 1rem;
+      overflow: hidden;
+      word-break: break-word;
     }
 
     .cta-section p {
@@ -665,7 +670,7 @@ const ogImage = "https://ptidej.fr/og.png";
 
   <!-- CTA FINAL -->
   <section class="cta-section">
-    <h2>Prêt à en finir avec l'injustice du café ?</h2>
+    <h2>Prêt à organiser vos petits-déjeuners équitablement ?</h2>
     <p>Inscris-toi pour être parmi les premiers à tester Ptidej.</p>
 
     <div class="form-wrapper" style="margin: 0 auto;">
