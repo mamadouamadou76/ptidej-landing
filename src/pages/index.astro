@@ -1,6 +1,6 @@
 ---
-const title = "P'tit Déj — Fini l'Excel, vive les rotations équitables";
-const description = "Ton collègue amène toujours le café et toi jamais ? Ptidej génère des plannings de petits-déjeuners équitables en 2 minutes. Gratuit, sans prise de tête.";
+const title = "P'tit Déj — Organisez vos petits-déjeuners d'équipe";
+const description = "Ptidej génère des plannings de petits-déjeuners équitables en 2 minutes. Gratuit, sans prise de tête.";
 const canonical = "https://ptidej.fr";
 const ogImage = "https://ptidej.fr/og.png";
 ---
@@ -13,8 +13,6 @@ const ogImage = "https://ptidej.fr/og.png";
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonical} />
   <meta property="og:title" content={title} />
@@ -22,21 +20,15 @@ const ogImage = "https://ptidej.fr/og.png";
   <meta property="og:image" content={ogImage} />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:site_name" content="P'tit Déj" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
-
-  <!-- SEO extras -->
   <meta name="robots" content="index, follow" />
   <meta name="author" content="P'tit Déj" />
   <meta name="theme-color" content="#D97706" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="sitemap" href="/sitemap-index.xml" />
 
-  <!-- Données structurées -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,18 +36,13 @@ const ogImage = "https://ptidej.fr/og.png";
     "name": "P'tit Déj",
     "applicationCategory": "ProductivityApplication",
     "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "EUR"
-    },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
     "description": "Application web gratuite de planning de petits-déjeuners d'équipe avec rotations équitables automatiques.",
     "url": "https://ptidej.fr",
     "inLanguage": "fr"
   }
   </script>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
@@ -66,6 +53,7 @@ const ogImage = "https://ptidej.fr/og.png";
     :root {
       --amber-50:  #FFFBEB;
       --amber-100: #FEF3C7;
+      --amber-200: #FDE68A;
       --amber-400: #FBBF24;
       --amber-500: #F59E0B;
       --amber-600: #D97706;
@@ -87,12 +75,9 @@ const ogImage = "https://ptidej.fr/og.png";
       background-color: var(--stone-50);
       color: var(--stone-900);
       overflow-x: hidden;
-      width: 100%;
-      max-width: 100vw;
       min-height: 100vh;
     }
 
-    /* ---- NOISE TEXTURE OVERLAY ---- */
     body::before {
       content: '';
       position: fixed;
@@ -103,52 +88,18 @@ const ogImage = "https://ptidej.fr/og.png";
       opacity: 0.4;
     }
 
-    /* ---- HERO ---- */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 5rem 1.5rem 4rem;
-      text-align: center;
-      overflow: hidden;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    /* Gradient mesh background */
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(251,191,36,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 90% 80%, rgba(217,119,6,0.10) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 30% at 10% 70%, rgba(251,191,36,0.08) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .hero > * { position: relative; z-index: 1; }
-
-    /* ---- NAV ---- */
+    /* NAV */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 1.25rem 2rem;
-      background: rgba(250,250,249,0.85);
+      background: rgba(250,250,249,0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--stone-200);
-      max-width: 100%;
-      overflow: hidden;
     }
 
     .nav-logo {
@@ -163,17 +114,11 @@ const ogImage = "https://ptidej.fr/og.png";
     }
 
     .nav-logo-dot {
-      width: 8px;
-      height: 8px;
+      width: 8px; height: 8px;
       background: var(--amber-500);
       border-radius: 50%;
       display: inline-block;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      flex-shrink: 0;
     }
 
     .nav-app-btn {
@@ -188,11 +133,36 @@ const ogImage = "https://ptidej.fr/og.png";
       transition: background 0.2s, transform 0.15s;
       white-space: nowrap;
     }
-
     .nav-app-btn:hover { background: var(--amber-600); transform: scale(1.02); }
-    .nav-app-btn:active { transform: scale(0.98); }
 
-    /* ---- EYEBROW ---- */
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 7rem 2rem 4rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(251,191,36,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 90% 80%, rgba(217,119,6,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 10% 70%, rgba(251,191,36,0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero > * { position: relative; z-index: 1; }
+
+    /* EYEBROW */
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -210,19 +180,19 @@ const ogImage = "https://ptidej.fr/og.png";
       animation: fadeUp 0.6s ease both;
     }
 
-    /* ---- HEADLINE ---- */
+    /* H1 */
     h1 {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: clamp(1.5rem, 2.8vw, 2.6rem);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
+      font-size: clamp(1.6rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
       color: var(--stone-900);
-      max-width: 600px;
+      max-width: 640px;
       margin: 0 auto 1.5rem;
-      word-break: keep-all;
-      overflow-wrap: break-word;
       hyphens: none;
+      word-break: normal;
+      overflow-wrap: normal;
       animation: fadeUp 0.6s 0.1s ease both;
     }
 
@@ -235,31 +205,26 @@ const ogImage = "https://ptidej.fr/og.png";
     h1 em::after {
       content: '';
       position: absolute;
-      bottom: 2px;
-      left: 0;
-      right: 0;
+      bottom: 2px; left: 0; right: 0;
       height: 3px;
       background: var(--amber-400);
       border-radius: 2px;
       opacity: 0.5;
     }
 
-    /* ---- SUBHEADLINE ---- */
+    /* SUBHEAD */
     .subhead {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
       color: var(--stone-600);
-      max-width: 560px;
+      max-width: 520px;
       line-height: 1.6;
       margin: 0 auto 1rem;
       animation: fadeUp 0.6s 0.2s ease both;
     }
 
-    .subhead strong {
-      color: var(--stone-900);
-      font-weight: 500;
-    }
+    .subhead strong { color: var(--stone-900); font-weight: 500; }
 
-    /* ---- PAIN QUOTE ---- */
+    /* PAIN QUOTE */
     .pain-quote {
       display: inline-block;
       background: var(--white);
@@ -273,13 +238,13 @@ const ogImage = "https://ptidej.fr/og.png";
       margin-bottom: 2.5rem;
       box-shadow: 0 2px 12px rgba(0,0,0,0.06);
       animation: fadeUp 0.6s 0.25s ease both;
-      max-width: 500px;
+      max-width: 480px;
     }
 
-    /* ---- FORM ---- */
+    /* FORM */
     .form-wrapper {
       width: 100%;
-      max-width: 480px;
+      max-width: 460px;
       animation: fadeUp 0.6s 0.3s ease both;
     }
 
@@ -308,6 +273,7 @@ const ogImage = "https://ptidej.fr/og.png";
       font-size: 0.95rem;
       color: var(--stone-900);
       padding: 0.6rem 0.75rem;
+      min-width: 0;
     }
 
     .form-row input::placeholder { color: var(--stone-400); }
@@ -317,10 +283,10 @@ const ogImage = "https://ptidej.fr/og.png";
       color: var(--white);
       border: none;
       border-radius: 12px;
-      padding: 0.75rem 1.5rem;
+      padding: 0.75rem 1.25rem;
       font-family: 'Syne', sans-serif;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       cursor: pointer;
       white-space: nowrap;
       transition: background 0.2s, transform 0.15s;
@@ -328,7 +294,6 @@ const ogImage = "https://ptidej.fr/og.png";
     }
 
     .btn-primary:hover { background: var(--amber-600); transform: scale(1.02); }
-    .btn-primary:active { transform: scale(0.98); }
     .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
     .form-note {
@@ -350,28 +315,19 @@ const ogImage = "https://ptidej.fr/og.png";
     .form-message.error { color: #dc2626; }
 
     .app-link-hint {
+      font-size: 0.82rem;
+      color: var(--stone-400);
       margin-top: 0.75rem;
-      font-size: 0.8rem;
-      color: var(--stone-500);
       text-align: center;
     }
+    .app-link { color: var(--amber-600); text-decoration: none; font-weight: 500; }
+    .app-link:hover { text-decoration: underline; }
 
-    .app-link {
-      color: var(--stone-500);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .app-link:hover { color: var(--amber-600); }
-
-    /* ---- FEATURES ---- */
+    /* FEATURES */
     .features {
-      padding: 5rem 1.5rem;
-      width: 100%;
+      padding: 5rem 2rem;
       max-width: 1100px;
       margin: 0 auto;
-      box-sizing: border-box;
     }
 
     .section-label {
@@ -388,17 +344,18 @@ const ogImage = "https://ptidej.fr/og.png";
     .section-title {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
       letter-spacing: -0.02em;
       text-align: center;
       color: var(--stone-900);
       margin-bottom: 1rem;
+      hyphens: none;
     }
 
     .section-sub {
       text-align: center;
       color: var(--stone-600);
-      max-width: 500px;
+      max-width: 520px;
       margin: 0 auto 3.5rem;
       font-size: 1rem;
       line-height: 1.6;
@@ -406,7 +363,7 @@ const ogImage = "https://ptidej.fr/og.png";
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
     }
 
@@ -423,42 +380,28 @@ const ogImage = "https://ptidej.fr/og.png";
       box-shadow: 0 12px 32px rgba(0,0,0,0.08);
     }
 
-    .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
+    .feature-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
 
     .feature-title {
       font-family: 'Syne', sans-serif;
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--stone-900);
       margin-bottom: 0.5rem;
     }
 
-    .feature-desc {
-      font-size: 0.9rem;
-      color: var(--stone-600);
-      line-height: 1.6;
-    }
+    .feature-desc { font-size: 0.9rem; color: var(--stone-600); line-height: 1.6; }
 
-    /* ---- HOW IT WORKS ---- */
+    /* HOW IT WORKS */
     .how {
       background: var(--stone-900);
       color: var(--white);
-      padding: 5rem 1.5rem;
-      max-width: 100%;
-      overflow: hidden;
+      padding: 5rem 2rem;
     }
 
     .how-inner {
-      width: 100%;
-      max-width: 1100px;
+      max-width: 900px;
       margin: 0 auto;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-      box-sizing: border-box;
     }
 
     .how .section-label { color: var(--amber-400); }
@@ -472,11 +415,7 @@ const ogImage = "https://ptidej.fr/og.png";
       margin-top: 3rem;
     }
 
-    .step {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
+    .step { display: flex; flex-direction: column; gap: 0.75rem; }
 
     .step-num {
       font-family: 'Syne', sans-serif;
@@ -494,31 +433,26 @@ const ogImage = "https://ptidej.fr/og.png";
       color: var(--white);
     }
 
-    .step-desc {
-      font-size: 0.875rem;
-      color: var(--stone-400);
-      line-height: 1.6;
-    }
+    .step-desc { font-size: 0.875rem; color: var(--stone-400); line-height: 1.6; }
 
-    /* ---- CTA FINAL ---- */
+    /* CTA */
     .cta-section {
-      padding: 6rem 1.5rem;
+      padding: 6rem 2rem;
       text-align: center;
       background: var(--amber-50);
       border-top: 1px solid var(--amber-100);
-      max-width: 100%;
-      overflow: hidden;
     }
 
     .cta-section h2 {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
       letter-spacing: -0.02em;
       color: var(--stone-900);
       margin-bottom: 1rem;
-      overflow: hidden;
-      word-break: keep-all;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
       hyphens: none;
     }
 
@@ -528,15 +462,13 @@ const ogImage = "https://ptidej.fr/og.png";
       font-size: 1rem;
     }
 
-    /* ---- FOOTER ---- */
+    /* FOOTER */
     footer {
       background: var(--stone-900);
       color: var(--stone-400);
       padding: 2rem 1.5rem;
       text-align: center;
       font-size: 0.8rem;
-      max-width: 100%;
-      overflow: hidden;
     }
 
     footer a {
@@ -548,25 +480,24 @@ const ogImage = "https://ptidej.fr/og.png";
 
     footer a:hover { color: var(--amber-400); }
 
-    /* ---- ANIMATIONS ---- */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ---- RESPONSIVE ---- */
     @media (max-width: 600px) {
       nav { padding: 1rem 1.25rem; }
       .nav-app-btn { font-size: 0.78rem; padding: 0.5rem 0.9rem; }
-      h1 { font-size: clamp(1.75rem, 8vw, 2.4rem); }
       .form-row { flex-direction: column; padding: 0.5rem; }
       .btn-primary { width: 100%; text-align: center; }
+      .features { padding: 3rem 1.25rem; }
+      .how { padding: 3rem 1.25rem; }
+      .cta-section { padding: 3rem 1.25rem; }
     }
   </style>
 </head>
 
 <body>
-  <!-- NAV -->
   <nav>
     <a href="/" class="nav-logo">
       <span class="nav-logo-dot"></span>
@@ -575,19 +506,16 @@ const ogImage = "https://ptidej.fr/og.png";
     <a href="https://app.ptidej.fr" class="nav-app-btn">Accéder à l'app</a>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
-    <span class="eyebrow">
-      ✨ Gratuit et disponible maintenant
-    </span>
+    <span class="eyebrow">✨ Gratuit et disponible maintenant</span>
 
     <h1>
-      Organisez vos petits-déjeuners d'équipe, <em>équitablement.</em>
+      Le planning de petits-déjeuners<br />que toute l'équipe <em>respecte.</em>
     </h1>
 
     <p class="subhead">
-      C'est toujours les mêmes qui amènent le café ?<br />
-      <strong>Ptidej génère des rotations équitables en 2 minutes.</strong><br />
+      Toujours les mêmes qui apportent le café ?<br />
+      <strong>Ptidej organise des rotations équitables en 2 minutes.</strong><br />
       Gratuit, sans prise de tête.
     </p>
 
@@ -597,29 +525,15 @@ const ogImage = "https://ptidej.fr/og.png";
 
     <div class="form-wrapper">
       <form class="form-row" id="waitlist-form" novalidate>
-        <input
-          type="email"
-          name="email"
-          id="email-input"
-          placeholder="ton@email.fr"
-          autocomplete="email"
-          required
-          aria-label="Ton adresse email"
-        />
-        <button type="submit" class="btn-primary" id="submit-btn">
-          Rejoindre gratuitement
-        </button>
+        <input type="email" name="email" id="email-input" placeholder="votre@email.fr" autocomplete="email" required aria-label="Votre adresse email" />
+        <button type="submit" class="btn-primary" id="submit-btn">Rejoindre gratuitement</button>
       </form>
       <p class="form-note">🔒 Gratuit, sans carte bleue. Toujours.</p>
       <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
-      <p class="app-link-hint">
-        Déjà inscrit ? <a href="https://app.ptidej.fr" class="app-link">→ Accéder à l'app</a>
-      </p>
+      <p class="app-link-hint">Déjà inscrit ? <a href="https://app.ptidej.fr" class="app-link">→ Accéder à l'app</a></p>
     </div>
-
   </section>
 
-  <!-- FEATURES -->
   <section class="features">
     <p class="section-label">Pourquoi Ptidej</p>
     <h2 class="section-title">Un planning juste, une équipe sereine</h2>
@@ -629,12 +543,12 @@ const ogImage = "https://ptidej.fr/og.png";
       <div class="feature-card">
         <span class="feature-icon">⚖️</span>
         <h3 class="feature-title">Rotations équitables</h3>
-        <p class="feature-desc">L'algorithme répartit les tours de façon juste, en tenant compte des absences et des congés. Personne ne se retrouve à amener le café trois fois de suite.</p>
+        <p class="feature-desc">L'algorithme répartit les tours de façon juste, en tenant compte des absences et des congés. Personne ne se retrouve à apporter le café trois fois de suite.</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">📅</span>
-        <h3 class="feature-title">Ta fréquence, tes règles</h3>
-        <p class="feature-desc">Chaque semaine, toutes les deux semaines, le vendredi matin... Tu définis le rythme de ton équipe et Ptidej génère le planning sur mesure.</p>
+        <h3 class="feature-title">Votre fréquence, vos règles</h3>
+        <p class="feature-desc">Chaque semaine, toutes les deux semaines, le vendredi matin... Définissez le rythme de votre équipe et Ptidej génère le planning sur mesure.</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">👥</span>
@@ -644,11 +558,11 @@ const ogImage = "https://ptidej.fr/og.png";
       <div class="feature-card">
         <span class="feature-icon">📵</span>
         <h3 class="feature-title">Zéro Excel. Zéro WhatsApp.</h3>
-        <p class="feature-desc">Plus de fichier partagé qui foire, plus de tableau qui se corrompt, plus de discussion interminable pour savoir à qui c'est le tour.</p>
+        <p class="feature-desc">Plus de fichier partagé qui se corrompt, plus de discussion interminable pour savoir à qui c'est le tour.</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">🌙</span>
-        <h3 class="feature-title">Rythmes alternés bienvenus</h3>
+        <h3 class="feature-title">Horaires décalés bienvenus</h3>
         <p class="feature-desc">Vous travaillez en horaires décalés ? Ptidej gère les absences par roulement et adapte les rotations automatiquement.</p>
       </div>
       <div class="feature-card">
@@ -659,7 +573,6 @@ const ogImage = "https://ptidej.fr/og.png";
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
   <section class="how">
     <div class="how-inner">
       <p class="section-label">Comment ça marche</p>
@@ -669,49 +582,37 @@ const ogImage = "https://ptidej.fr/og.png";
       <div class="steps">
         <div class="step">
           <span class="step-num">01</span>
-          <h3 class="step-title">Crée ton équipe</h3>
+          <h3 class="step-title">Créez votre équipe</h3>
           <p class="step-desc">Ajoutez vos collègues, définissez la fréquence et les préférences de l'équipe.</p>
         </div>
         <div class="step">
           <span class="step-num">02</span>
-          <h3 class="step-title">Génère le planning</h3>
+          <h3 class="step-title">Générez le planning</h3>
           <p class="step-desc">Ptidej calcule automatiquement les rotations équitables sur la période souhaitée.</p>
         </div>
         <div class="step">
           <span class="step-num">03</span>
-          <h3 class="step-title">Partage &amp; profite</h3>
-          <p class="step-desc">Partagez le lien à l'équipe. Tout le monde est synchronisé en temps réel.</p>
+          <h3 class="step-title">Partagez et profitez</h3>
+          <p class="step-desc">Partagez le lien à votre équipe. Tout le monde est synchronisé en temps réel.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA FINAL -->
   <section class="cta-section">
     <h2>Prêt à simplifier l'organisation de vos petits-déjeuners ?</h2>
     <p>Rejoignez les équipes qui utilisent Ptidej pour des rotations équitables.</p>
 
     <div class="form-wrapper" style="margin: 0 auto;">
       <form class="form-row" id="waitlist-form-2" novalidate>
-        <input
-          type="email"
-          name="email"
-          id="email-input-2"
-          placeholder="ton@email.fr"
-          autocomplete="email"
-          required
-          aria-label="Ton adresse email"
-        />
-        <button type="submit" class="btn-primary" id="submit-btn-2">
-          Rejoindre gratuitement
-        </button>
+        <input type="email" name="email" id="email-input-2" placeholder="votre@email.fr" autocomplete="email" required aria-label="Votre adresse email" />
+        <button type="submit" class="btn-primary" id="submit-btn-2">Rejoindre gratuitement</button>
       </form>
       <p class="form-note">🔒 Gratuit, sans carte bleue. Toujours.</p>
       <p class="form-message" id="form-message-2" role="status" aria-live="polite"></p>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>
       <a href="/mentions-legales">Mentions légales</a>
@@ -719,23 +620,21 @@ const ogImage = "https://ptidej.fr/og.png";
       <a href="mailto:contact@ptidej.fr">Contact</a>
     </p>
     <p style="margin-top: 0.75rem;">© 2026 P'tit Déj — Fait avec ☕ en France</p>
-    <p style="font-size: 0.7rem; color: #666; margin-top: 0.5rem;">v1.5</p>
+    <p style="font-size: 0.7rem; color: #666; margin-top: 0.5rem;">v2.0</p>
   </footer>
 
   <script>
     async function handleSubmit(formEl, inputEl, btnEl, msgEl) {
       const email = inputEl.value.trim();
       if (!email || !email.includes('@')) {
-        msgEl.textContent = 'Saisis une adresse email valide.';
+        msgEl.textContent = 'Saisissez une adresse email valide.';
         msgEl.className = 'form-message error';
         return;
       }
-
       btnEl.disabled = true;
-      btnEl.textContent = 'Inscription…';
+      btnEl.textContent = 'Inscription...';
       msgEl.textContent = '';
       msgEl.className = 'form-message';
-
       try {
         const res = await fetch('/api/waitlist', {
           method: 'POST',
@@ -743,18 +642,17 @@ const ogImage = "https://ptidej.fr/og.png";
           body: JSON.stringify({ email }),
         });
         const data = await res.json();
-
         if (data.success) {
           msgEl.textContent = data.already
-            ? '✅ Tu étais déjà inscrit(e) — on te préviendra !'
-            : '🎉 Parfait ! On te prévient dès l\'ouverture.';
+            ? 'Vous étiez déjà inscrit(e) — nous vous préviendrons !'
+            : 'Parfait ! Vous avez accès à l\'application dès maintenant.';
           msgEl.className = 'form-message success';
           inputEl.value = '';
         } else {
           throw new Error(data.error || 'Erreur inconnue');
         }
       } catch (e) {
-        msgEl.textContent = 'Une erreur est survenue. Réessaie dans un instant.';
+        msgEl.textContent = 'Une erreur est survenue. Réessayez dans un instant.';
         msgEl.className = 'form-message error';
       } finally {
         btnEl.disabled = false;
@@ -762,26 +660,14 @@ const ogImage = "https://ptidej.fr/og.png";
       }
     }
 
-    // Formulaire hero
     document.getElementById('waitlist-form').addEventListener('submit', e => {
       e.preventDefault();
-      handleSubmit(
-        e.currentTarget,
-        document.getElementById('email-input'),
-        document.getElementById('submit-btn'),
-        document.getElementById('form-message')
-      );
+      handleSubmit(e.currentTarget, document.getElementById('email-input'), document.getElementById('submit-btn'), document.getElementById('form-message'));
     });
 
-    // Formulaire CTA bas de page
     document.getElementById('waitlist-form-2').addEventListener('submit', e => {
       e.preventDefault();
-      handleSubmit(
-        e.currentTarget,
-        document.getElementById('email-input-2'),
-        document.getElementById('submit-btn-2'),
-        document.getElementById('form-message-2')
-      );
+      handleSubmit(e.currentTarget, document.getElementById('email-input-2'), document.getElementById('submit-btn-2'), document.getElementById('form-message-2'));
     });
   </script>
 </body>
