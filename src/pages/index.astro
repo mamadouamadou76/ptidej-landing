@@ -669,6 +669,25 @@ const ogImage = "https://ptidej.fr/og.png";
       e.preventDefault();
       handleSubmit(e.currentTarget, document.getElementById('email-input-2'), document.getElementById('submit-btn-2'), document.getElementById('form-message-2'));
     });
+
+    // CMS Firestore — remplace les textes si le document cms/landing existe
+    (async function() {
+      try {
+        const url = 'https://firestore.googleapis.com/v1/projects/openaiv1/databases/ai-studio-fce779ca-3f99-4909-b744-79951a23f490/documents/cms/landing';
+        const res = await fetch(url);
+        if (!res.ok) return;
+        const data = await res.json();
+        const fields = data.fields;
+        if (!fields) return;
+        const str = (key) => fields[key]?.stringValue || '';
+        if (str('hero_title'))     document.querySelector('h1').textContent = str('hero_title');
+        if (str('hero_subtitle'))  document.querySelector('.subhead').textContent = str('hero_subtitle');
+        if (str('features_title')) document.querySelector('.features .section-title').textContent = str('features_title');
+        if (str('cta_title'))      document.querySelector('.cta-section h2').textContent = str('cta_title');
+      } catch (_) {
+        // Fallback silencieux — les textes par défaut restent affichés
+      }
+    })();
   </script>
 </body>
 </html>
