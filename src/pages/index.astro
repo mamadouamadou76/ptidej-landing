@@ -111,7 +111,7 @@ const ogImage = "https://ptidej.fr/og.png";
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 6rem 1.5rem 4rem;
+      padding: 5rem 1.5rem 4rem;
       text-align: center;
       overflow: hidden;
       width: 100%;
@@ -214,15 +214,15 @@ const ogImage = "https://ptidej.fr/og.png";
     h1 {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: clamp(1.8rem, 4vw, 3.5rem);
+      font-size: clamp(1.5rem, 2.8vw, 2.6rem);
       line-height: 1.1;
       letter-spacing: -0.03em;
       color: var(--stone-900);
-      max-width: 820px;
+      max-width: 600px;
       margin: 0 auto 1.5rem;
-      word-break: normal;
+      word-break: keep-all;
       overflow-wrap: break-word;
-      hyphens: auto;
+      hyphens: none;
       animation: fadeUp 0.6s 0.1s ease both;
     }
 
@@ -513,12 +513,13 @@ const ogImage = "https://ptidej.fr/og.png";
     .cta-section h2 {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-size: clamp(1.4rem, 2.5vw, 2.4rem);
       letter-spacing: -0.02em;
       color: var(--stone-900);
       margin-bottom: 1rem;
       overflow: hidden;
-      word-break: break-word;
+      word-break: keep-all;
+      hyphens: none;
     }
 
     .cta-section p {
@@ -718,7 +719,7 @@ const ogImage = "https://ptidej.fr/og.png";
       <a href="mailto:contact@ptidej.fr">Contact</a>
     </p>
     <p style="margin-top: 0.75rem;">© 2026 P'tit Déj — Fait avec ☕ en France</p>
-    <p style="font-size: 0.7rem; color: #666; margin-top: 0.5rem;">v1.4</p>
+    <p style="font-size: 0.7rem; color: #666; margin-top: 0.5rem;">v1.5</p>
   </footer>
 
   <script>
