@@ -1,0 +1,34 @@
+# P'tit Déj
+
+> Planificateur automatique de rotations de petits-déjeuners d'équipe. Gratuit, français.
+
+## Description
+
+P'tit Déj organise les rotations de petits-déjeuners de votre équipe de façon équitable :
+algorithme de rotation automatique, gestion des absences, synchronisation Firebase en temps réel,
+partage par lien. Aucun paiement requis. Fonctionne sur mobile et desktop.
+
+## Fonctionnalités principales
+
+- Rotation équitable tenant compte des absences
+- Fréquence personnalisable (1 à 52 semaines)
+- Synchronisation temps réel entre membres de l'équipe
+- Partage par code d'équipe
+- PWA installable sur mobile
+- 100% gratuit
+
+## Public cible
+
+Équipes en entreprise souhaitant organiser des petits-déjeuners collectifs sans spreadsheet ni messagerie.
+
+## Technologie
+
+Application web progressive (PWA) — React 19, Firebase, Tailwind CSS.
+
+## Contact
+
+contact@ptidej.fr
+
+## URL
+
+https://ptidej.fr
