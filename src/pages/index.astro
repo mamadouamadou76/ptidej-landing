@@ -566,8 +566,11 @@ const ogImage = "https://ptidej.fr/og.png";
     .carousel-viewport {
       position: relative;
       overflow: hidden;
-      aspect-ratio: 16 / 10;
-      background: var(--stone-100);
+      height: 520px;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .carousel-slide {
@@ -576,6 +579,9 @@ const ogImage = "https://ptidej.fr/og.png";
       opacity: 0;
       transition: opacity 0.6s ease;
       pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .carousel-slide.is-active {
@@ -584,16 +590,18 @@ const ogImage = "https://ptidej.fr/og.png";
     }
 
     .carousel-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
       display: block;
     }
 
     .carousel-caption {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(28,25,23,0.72) 0%, transparent 100%);
+      background: linear-gradient(to top, rgba(28,25,23,0.65) 0%, transparent 100%);
       color: #fff;
       padding: 2.5rem 1.25rem 1rem;
       font-size: 0.88rem;
@@ -626,6 +634,7 @@ const ogImage = "https://ptidej.fr/og.png";
 
     @media (max-width: 600px) {
       .carousel-section { padding: 3rem 1.25rem; }
+      .carousel-viewport { height: 360px; }
     }
   </style>
 </head>
