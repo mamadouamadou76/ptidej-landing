@@ -503,6 +503,130 @@ const ogImage = "https://ptidej.fr/og.png";
       .how { padding: 3rem 1.25rem; }
       .cta-section { padding: 3rem 1.25rem; }
     }
+
+    /* ── SCREENSHOTS CAROUSEL ─────────────────────────────────────── */
+    .carousel-section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .carousel-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      letter-spacing: -0.02em;
+      color: var(--stone-900);
+      margin-bottom: 2.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .browser-mockup {
+      max-width: 600px;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow:
+        0 24px 64px rgba(0,0,0,0.10),
+        0 4px 16px rgba(0,0,0,0.06),
+        0 0 0 1px var(--stone-200);
+      overflow: hidden;
+    }
+
+    .browser-bar {
+      background: var(--stone-100);
+      border-bottom: 1px solid var(--stone-200);
+      padding: 0.55rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .browser-dot {
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .browser-dot:nth-child(1) { background: #FF5F57; }
+    .browser-dot:nth-child(2) { background: #FFBD2E; }
+    .browser-dot:nth-child(3) { background: #28C840; }
+
+    .browser-url-bar {
+      flex: 1;
+      background: var(--stone-200);
+      border-radius: 5px;
+      padding: 0.25rem 0.7rem;
+      margin-left: 0.4rem;
+    }
+
+    .browser-url-text {
+      font-size: 0.7rem;
+      color: var(--stone-600);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .carousel-viewport {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      background: var(--stone-100);
+    }
+
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+
+    .carousel-slide.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(28,25,23,0.72) 0%, transparent 100%);
+      color: #fff;
+      padding: 2.5rem 1.25rem 1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-align: left;
+      letter-spacing: -0.01em;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .carousel-dot-btn {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--stone-200);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .carousel-dot-btn.is-active {
+      background: var(--amber-500);
+      transform: scale(1.4);
+    }
+
+    @media (max-width: 600px) {
+      .carousel-section { padding: 3rem 1.25rem; }
+    }
   </style>
 </head>
 
@@ -540,6 +664,44 @@ const ogImage = "https://ptidej.fr/og.png";
       <p class="form-note">🔒 Gratuit, sans carte bleue. Toujours.</p>
       <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
       <p class="app-link-hint">Déjà inscrit ? <a href="https://app.ptidej.fr" class="app-link">→ Accéder à l'app</a></p>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS CAROUSEL -->
+  <section class="carousel-section">
+    <p class="section-label">En images</p>
+    <h2 class="carousel-heading">Voir Ptidej en action</h2>
+
+    <div class="browser-mockup" id="browser-mockup">
+      <div class="browser-bar">
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+        <div class="browser-url-bar">
+          <span class="browser-url-text">app.ptidej.fr</span>
+        </div>
+      </div>
+
+      <div class="carousel-viewport" id="carousel-viewport">
+        <div class="carousel-slide is-active" data-slide="0">
+          <img src="/screenshots/screenshot-1.png" alt="Le planning de la semaine, clair et lisible" width="600" height="375" loading="lazy" decoding="async" />
+          <div class="carousel-caption">Le planning de la semaine, clair et lisible</div>
+        </div>
+        <div class="carousel-slide" data-slide="1">
+          <img src="/screenshots/screenshot-2.png" alt="Une répartition 100% équitable, visible par tous" width="600" height="375" loading="lazy" decoding="async" />
+          <div class="carousel-caption">Une répartition 100% équitable, visible par tous</div>
+        </div>
+        <div class="carousel-slide" data-slide="2">
+          <img src="/screenshots/screenshot-3.png" alt="Ajustez manuellement en un clic si besoin" width="600" height="375" loading="lazy" decoding="async" />
+          <div class="carousel-caption">Ajustez manuellement en un clic si besoin</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-dots" role="group" aria-label="Navigation du carrousel">
+      <button class="carousel-dot-btn is-active" data-dot="0" aria-label="Voir la capture 1"></button>
+      <button class="carousel-dot-btn" data-dot="1" aria-label="Voir la capture 2"></button>
+      <button class="carousel-dot-btn" data-dot="2" aria-label="Voir la capture 3"></button>
     </div>
   </section>
 
@@ -678,6 +840,38 @@ const ogImage = "https://ptidej.fr/og.png";
       e.preventDefault();
       handleSubmit(e.currentTarget, document.getElementById('email-input-2'), document.getElementById('submit-btn-2'), document.getElementById('form-message-2'));
     });
+
+    // ── Carrousel screenshots ──────────────────────────────────────────────
+    (function () {
+      const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+      const dots   = Array.from(document.querySelectorAll('.carousel-dot-btn'));
+      if (!slides.length) return;
+
+      let current = 0;
+      let timer   = null;
+
+      function goTo(n) {
+        slides[current].classList.remove('is-active');
+        dots[current].classList.remove('is-active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('is-active');
+        dots[current].classList.add('is-active');
+      }
+
+      function startTimer() {
+        timer = setInterval(function () { goTo(current + 1); }, 4000);
+      }
+
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          clearInterval(timer);
+          goTo(Number(dot.dataset.dot));
+          startTimer();
+        });
+      });
+
+      startTimer();
+    })();
 
     // CMS Firestore — remplace les textes si le document cms/landing existe
     (async function() {
