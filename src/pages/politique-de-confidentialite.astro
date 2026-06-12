@@ -21,6 +21,15 @@ const canonical = "https://ptidej.fr/politique-de-confidentialite";
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
 
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x5xj8iwm95");
+  </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -369,7 +378,7 @@ const canonical = "https://ptidej.fr/politique-de-confidentialite";
             <td>Consentement (art. 6.1.a RGPD)</td>
           </tr>
           <tr>
-            <td>Statistiques d'usage anonymisées (amélioration du service)</td>
+            <td>Statistiques d'usage anonymisées via Microsoft Clarity (heatmaps, sessions) et compteurs internes (connexions, inscriptions)</td>
             <td>Intérêt légitime (art. 6.1.f RGPD) — données non réidentifiables</td>
           </tr>
         </tbody>
@@ -402,6 +411,11 @@ const canonical = "https://ptidej.fr/politique-de-confidentialite";
             <td><strong>Brevo (Sendinblue SAS)</strong></td>
             <td>Envoi des emails transactionnels et de la newsletter de lancement</td>
             <td>France — données hébergées dans l'UE</td>
+          </tr>
+          <tr>
+            <td><strong>Microsoft Clarity</strong></td>
+            <td>Analyse comportementale anonymisée (heatmaps, enregistrements de session)</td>
+            <td>États-Unis — clauses contractuelles types (DPA Microsoft)</td>
           </tr>
         </tbody>
       </table>
@@ -460,14 +474,26 @@ const canonical = "https://ptidej.fr/politique-de-confidentialite";
     </div>
 
     <div class="legal-section">
-      <h2>7. Cookies et traceurs</h2>
+      <h2>7. Cookies et analyse</h2>
       <p>
-        Nous utilisons uniquement des cookies <strong>strictement nécessaires</strong> au fonctionnement du service,
+        Nous utilisons des cookies <strong>strictement nécessaires</strong> au fonctionnement du service,
         notamment le cookie de session Firebase requis pour maintenir votre authentification.
       </p>
       <p>
-        Nous n'utilisons <strong>aucun cookie de tracking, de publicité, ni d'analyse comportementale</strong>.
-        Aucun consentement à des cookies non essentiels ne vous sera demandé.
+        <strong>Microsoft Clarity</strong> est utilisé pour analyser l'usage du site (heatmaps, enregistrements
+        de session anonymisés) dans le but d'améliorer l'expérience utilisateur. Clarity ne collecte aucune
+        donnée personnelle identifiable : les enregistrements de session masquent automatiquement les champs
+        sensibles, les adresses IP sont tronquées et aucune donnée n'est revendue à des tiers.
+      </p>
+      <p>
+        Base légale : intérêt légitime (art. 6.1.f RGPD) — amélioration de l'expérience produit à partir
+        de données non réidentifiables.
+      </p>
+      <p>
+        Pour en savoir plus :
+        <a href="https://privacy.microsoft.com/fr-fr/privacystatement" target="_blank" rel="noopener noreferrer">
+          Politique de confidentialité Microsoft
+        </a>.
       </p>
     </div>
 
