@@ -144,6 +144,22 @@ const ogImage = "https://ptidej.fr/og.png";
     }
     .nav-app-btn:hover { background: var(--amber-600); transform: scale(1.02); }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-link {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--stone-700);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--amber-600); }
+
     /* HERO */
     .hero {
       position: relative;
@@ -645,7 +661,10 @@ const ogImage = "https://ptidej.fr/og.png";
       <span class="nav-logo-dot"></span>
       P'tit Déj
     </a>
-    <a href="https://app.ptidej.fr" class="nav-app-btn">Accéder à l'app</a>
+    <div class="nav-right">
+      <a href="/blog" class="nav-link">Blog</a>
+      <a href="https://app.ptidej.fr" class="nav-app-btn">Accéder à l'app</a>
+    </div>
   </nav>
 
   <section class="hero">
