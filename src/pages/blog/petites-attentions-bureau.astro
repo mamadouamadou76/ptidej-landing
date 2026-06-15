@@ -22,24 +22,73 @@ const dateDisplay = "15 juin 2026";
   <meta property="og:site_name" content="P'tit Déj" />
   <meta property="article:published_time" content={dateISO} />
   <meta name="robots" content="index, follow" />
-  <meta name="author" content="P'tit Déj" />
+  <meta name="author" content="L'équipe Ptidej" />
   <meta name="theme-color" content="#D97706" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+  <!-- Schema: BlogPosting -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "Pourquoi les petites attentions au bureau comptent (et comment les automatiser)",
-    "description": "Les petits rituels d'équipe comme le café ou les croissants renforcent la cohésion. Mais sans organisation équitable, ils s'épuisent.",
+    "description": "Les petits rituels d'équipe comme le café ou les croissants renforcent la cohésion. Mais sans organisation équitable, ils s'épuisent. Voici comment les pérenniser.",
     "url": "https://ptidej.fr/blog/petites-attentions-bureau",
     "datePublished": "2026-06-15",
     "inLanguage": "fr",
+    "author": {
+      "@type": "Organization",
+      "name": "L'équipe Ptidej",
+      "url": "https://ptidej.fr"
+    },
     "publisher": {
       "@type": "Organization",
       "name": "P'tit Déj",
       "url": "https://ptidej.fr"
-    }
+    },
+    "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&auto=format&fit=crop&q=80"
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Comment lancer un rituel petit-déjeuner dans son équipe ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pas besoin d'annonce officielle. Proposez à 3 ou 4 collègues de partager un café vendredi matin. Une fois que le rituel existe, un outil comme Ptidej peut gérer la rotation automatiquement pour que tout le monde participe équitablement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment gérer les absences dans la rotation ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ptidej intègre la gestion des absences directement dans le planning. Quand un membre de l'équipe est absent ou en congés, l'algorithme le passe automatiquement et redistribue son tour sans intervention manuelle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de personnes faut-il pour que ça vaille le coup ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dès 3 personnes, une rotation a du sens. Ptidej fonctionne pour des équipes de 3 à 50 personnes et plus. Plus l'équipe est grande, plus l'outil est utile pour éviter les déséquilibres invisibles."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Est-ce vraiment gratuit ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, Ptidej est entièrement gratuit. Pas de carte bancaire requise, pas d'engagement, pas de limite de membres dans l'équipe."
+        }
+      }
+    ]
   }
   </script>
 
@@ -183,8 +232,8 @@ const dateDisplay = "15 juin 2026";
     .page-breadcrumb a:hover { text-decoration: underline; }
 
     .article-header {
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
       border-bottom: 1px solid var(--stone-200);
     }
 
@@ -210,6 +259,30 @@ const dateDisplay = "15 juin 2026";
       letter-spacing: -0.025em;
       line-height: 1.2;
       color: var(--stone-900);
+    }
+
+    /* AUTHOR */
+    .article-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--stone-600);
+      padding: 1rem 0 1.75rem;
+      border-bottom: 1px solid var(--stone-200);
+      margin-bottom: 2.5rem;
+    }
+
+    .article-author-avatar {
+      width: 36px;
+      height: 36px;
+      background: var(--amber-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
     }
 
     /* HERO IMAGE */
@@ -268,10 +341,148 @@ const dateDisplay = "15 juin 2026";
       margin-bottom: 1rem;
     }
 
+    .article-body ul {
+      margin: 0 0 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .article-body ul li {
+      line-height: 1.7;
+    }
+
+    .article-source {
+      display: inline;
+      color: var(--amber-600);
+      font-size: 0.85em;
+      text-decoration: none;
+      border-bottom: 1px dashed var(--amber-400);
+      transition: border-color 0.2s;
+    }
+    .article-source:hover { border-color: var(--amber-600); }
+
+    /* STEPS */
+    .article-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 0 0 1.5rem;
+    }
+
+    .step {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: var(--amber-500);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .step-content strong {
+      display: block;
+      color: var(--stone-900);
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .step-content span {
+      font-size: 0.95rem;
+      color: var(--stone-600);
+    }
+
+    /* FAQ */
+    .article-faq {
+      margin-top: 3rem;
+      border-top: 1px solid var(--stone-200);
+      padding-top: 2.5rem;
+    }
+
+    .article-faq h2 {
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: -0.015em;
+      color: var(--stone-900);
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--stone-200);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--stone-900);
+      transition: background 0.15s;
+    }
+
+    .faq-question:hover { background: var(--stone-50); }
+
+    .faq-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      background: var(--amber-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--amber-700);
+      transition: transform 0.2s;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      display: none;
+      padding: 0 1.25rem 1.1rem;
+      font-size: 0.95rem;
+      color: var(--stone-600);
+      line-height: 1.7;
+      border-top: 1px solid var(--stone-100);
+      padding-top: 1rem;
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+
     /* CTA BOX */
     .article-cta {
-      margin-top: 3.5rem;
-      padding: 2rem 2rem;
+      margin-top: 3rem;
+      padding: 2rem;
       background: var(--amber-50);
       border: 1px solid var(--amber-200);
       border-left: 4px solid var(--amber-500);
@@ -285,9 +496,7 @@ const dateDisplay = "15 juin 2026";
       margin-bottom: 1.25rem;
     }
 
-    .article-cta p:last-of-type {
-      margin-bottom: 0;
-    }
+    .article-cta p:last-of-type { margin-bottom: 0; }
 
     .cta-buttons {
       display: flex;
@@ -392,15 +601,23 @@ const dateDisplay = "15 juin 2026";
       <div class="article-meta">
         <time datetime={dateISO}>{dateDisplay}</time>
         <span class="article-meta-dot"></span>
-        <span>4 min de lecture</span>
+        <span>7 min de lecture</span>
       </div>
       <h1 class="article-title">Pourquoi les petites attentions au bureau comptent (et comment les automatiser)</h1>
     </header>
 
+    <div class="article-author">
+      <div class="article-author-avatar">☕</div>
+      <div>
+        <strong>L'équipe Ptidej</strong> — créateurs de P'tit Déj,
+        outil gratuit de planification équitable pour équipes.
+      </div>
+    </div>
+
     <div class="article-hero">
       <img
         src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&auto=format&fit=crop&q=80"
-        alt="Tasse de café sur une table en bois au soleil du matin"
+        alt="Tasse de café fumante sur une table en bois clair, lumière du matin — symbole du rituel quotidien d'équipe"
         loading="eager"
         width="1200"
         height="525"
@@ -418,89 +635,206 @@ const dateDisplay = "15 juin 2026";
       <h2>Le ciment invisible des équipes</h2>
 
       <p>
-        Les chercheurs en psychologie du travail le confirment depuis longtemps : les petits rituels
-        partagés renforcent le sentiment d'appartenance et la cohésion d'équipe bien plus efficacement
-        que les grandes opérations "team building" annuelles. Un café partagé, une attention simple —
-        ça crée des micro-moments de connexion qui, mis bout à bout, façonnent une culture d'équipe positive.
+        Le <a class="article-source" href="https://rework.withgoogle.com/intl/fr/guides/understanding-team-effectiveness" target="_blank" rel="noopener noreferrer">Project Aristotle de Google (re:Work, 2015)</a>,
+        l'une des études les plus complètes jamais menées sur la performance des équipes,
+        a identifié que le facteur numéro un d'une équipe efficace n'est pas le talent individuel
+        ni les process, mais la <strong>sécurité psychologique</strong> — le sentiment que l'on peut
+        s'exprimer et être soi-même sans risque de jugement. Les petits rituels partagés, comme le
+        café du matin ou les croissants du vendredi, sont précisément ce type de micro-signal qui
+        construit cette sécurité, semaine après semaine.
       </p>
 
       <p>
-        Le problème, c'est que ces rituels reposent souvent sur la bonne volonté de quelques personnes.
-        Et la bonne volonté, ça s'épuise.
+        Un café partagé, une attention simple — ça crée des micro-moments de connexion qui, mis bout
+        à bout, façonnent une culture d'équipe positive bien plus efficacement que les grandes opérations
+        "team building" annuelles. Le problème, c'est que ces rituels reposent souvent sur la bonne
+        volonté de quelques personnes. Et la bonne volonté, ça s'épuise.
       </p>
 
       <h2>Le syndrome du "c'est toujours moi"</h2>
 
       <p>
-        Si vous avez déjà entendu (ou prononcé) la phrase "attends, c'est encore toi qui apportes le
-        café cette semaine ?", vous connaissez le problème. Sans organisation, ce sont souvent les mêmes
-        deux ou trois personnes qui portent ce petit rituel — par habitude, par gentillesse, ou simplement
-        parce que personne d'autre n'y pense.
+        Prenons un exemple concret. Dans une équipe de huit personnes, le rituel du vendredi matin
+        a démarré naturellement il y a six mois. Marie apportait des viennoiseries, Julien préparait
+        le café. Les deux premières semaines, Marc et Sophie se sont mis à participer — sporadiquement.
+        Les quatre autres venaient, appréciaient, mais n'ont jamais pris le relais. Personne n'avait
+        rien décidé officiellement, personne n'avait réparti les tours.
       </p>
 
       <p>
-        Au début, ça ne dérange personne. Puis, semaine après semaine, ça devient une charge invisible.
-        Et quand cette personne est absente ou en a simplement assez, le rituel disparaît souvent purement
-        et simplement — emportant avec lui ce petit moment de cohésion.
+        Au bout de trois mois, Marie en avait assez. Pas d'une manière dramatique — juste cette fatigue
+        douce de toujours être celle qui pense à acheter les croissants le jeudi soir, qui anticipe les
+        allergies de chacun, qui remet de l'argent de sa poche quand elle a oublié de collecter. Elle a
+        fini par arrêter sans le dire. Le vendredi suivant, personne n'a rien apporté. Le rituel a disparu.
+      </p>
+
+      <p>
+        Ce n'est pas un problème de mauvaise volonté — les sept autres auraient volontiers participé si
+        on le leur avait demandé. C'est un problème d'organisation : sans rotation visible, la charge
+        reste invisible sur les épaules des mêmes personnes.
       </p>
 
       <figure class="article-figure">
         <img
           src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop&q=80"
-          alt="Collègues autour d'une table, partageant un moment ensemble"
+          alt="Équipe de bureau souriante partageant un moment convivial autour d'une table, ambiance chaleureuse et collaborative"
           loading="lazy"
           width="800"
           height="450"
         />
-        <figcaption>Ces micro-moments du quotidien construisent la culture d'équipe sur la durée. Photo : Brooke Cagle / Unsplash</figcaption>
+        <figcaption>Ces micro-moments du quotidien construisent la sécurité psychologique et la cohésion d'équipe sur la durée. Photo : Brooke Cagle / Unsplash</figcaption>
       </figure>
 
       <h2>Automatiser ce qui peut l'être, pour préserver ce qui compte</h2>
 
       <p>
-        L'idée n'est pas de rendre ces moments froids ou mécaniques — bien au contraire. C'est de retirer
-        la charge mentale de "qui doit s'en occuper cette fois" pour que tout le monde puisse simplement...
-        en profiter.
+        L'idée n'est pas de rendre ces moments froids ou mécaniques — bien au contraire. C'est de
+        retirer la charge mentale de "qui doit s'en occuper cette fois" pour que tout le monde puisse
+        simplement... en profiter. Concrètement, un outil de rotation apporte trois bénéfices immédiats :
       </p>
+
+      <ul>
+        <li>
+          <strong>L'équité devient visible.</strong> Quand chacun peut voir qui a participé quand,
+          la frustration silencieuse disparaît. Plus personne n'a l'impression de donner plus que les
+          autres — parce que la réalité est là, objective, consultable par tous.
+        </li>
+        <li>
+          <strong>Les absences sont gérées automatiquement.</strong> Congés, télétravail, arrêt maladie —
+          l'algorithme redistribue les tours sans que personne n'ait à recalculer quoi que ce soit à la
+          main. Le planning reste juste même quand l'équipe fluctue.
+        </li>
+        <li>
+          <strong>La charge mentale est éliminée.</strong> Plus besoin de se souvenir, de relancer,
+          d'envoyer un rappel la veille. Le planning est disponible en temps réel pour toute l'équipe.
+          Chacun sait à l'avance quand c'est son tour — et peut s'y préparer sans surprise.
+        </li>
+      </ul>
 
       <p>
         C'est exactement le constat qui a mené à la création de Ptidej, un outil gratuit qui génère
-        automatiquement un planning équitable de rotation pour les petits-déjeuners d'équipe. L'algorithme
-        tient compte des absences et des congés, tout le monde voit le planning en temps réel, et personne
-        ne se retrouve à porter la charge trois semaines de suite sans même s'en rendre compte.
-      </p>
-
-      <p>
+        automatiquement un planning équitable de rotation pour les petits-déjeuners d'équipe.
         Ce n'est pas une révolution managériale — c'est juste un petit outil pour qu'un petit rituel
         sympa reste sympa, pour tout le monde, sur la durée.
       </p>
 
+      <h2>Comment mettre ça en place dans votre équipe</h2>
+
+      <p>
+        La bonne nouvelle : lancer un rituel structuré prend moins de temps qu'on ne le pense. Voici
+        comment procéder en quatre étapes.
+      </p>
+
+      <div class="article-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Identifier les participants</strong>
+            <span>Listez les membres de votre équipe qui souhaitent participer. Pas besoin que ce soit tout le monde — même 3 personnes suffisent pour qu'une rotation ait du sens.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Définir la fréquence</strong>
+            <span>Hebdomadaire, bi-mensuel, ou mensuel selon la taille de l'équipe. Pour 8 personnes, une rotation hebdomadaire signifie que chacun passe environ une fois toutes les deux mois.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Créer le planning en 2 minutes</strong>
+            <span>Sur <a class="article-source" href="https://app.ptidej.fr">app.ptidej.fr</a>, créez votre équipe, ajoutez les membres et laissez l'algorithme générer le planning équitable. Gratuit, sans inscription requise pour commencer.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Partager le lien avec l'équipe</strong>
+            <span>Chaque membre reçoit un lien vers le planning partagé. Tout le monde voit les tours à venir, peut signaler une absence, et le planning se met à jour automatiquement.</span>
+          </div>
+        </div>
+      </div>
+
       <h2>En bref</h2>
 
       <p>
-        Les petites attentions au bureau ne sont pas "accessoires" — elles font partie de ce qui rend
-        une équipe agréable à vivre. Mais pour durer, elles ont besoin d'un minimum d'organisation,
-        juste assez pour que ça reste équitable et sans friction.
+        Les petites attentions au bureau ne sont pas "accessoires" — comme le montre le Project Aristotle,
+        elles font partie des fondations invisibles qui rendent une équipe agréable à vivre et performante
+        dans la durée. Mais pour qu'elles perdurent, elles ont besoin d'un minimum d'organisation : juste
+        assez pour que ça reste équitable et sans friction, et que la charge ne repose plus sur les épaules
+        des mêmes personnes.
       </p>
 
       <p>
         Si votre équipe a ce genre de rituel (ou voudrait en lancer un), Ptidej est gratuit et prend
         deux minutes à configurer.
       </p>
+    </div>
 
-      <div class="article-cta">
-        <p>
-          <strong>Organisez vos petits-déjeuners d'équipe en 2 minutes.</strong><br />
-          Ptidej génère des plannings de rotation équitables, gère les absences et synchronise tout le monde en temps réel. Gratuit, sans engagement.
-        </p>
-        <div class="cta-buttons">
-          <a href="https://app.ptidej.fr" class="cta-btn-primary">Essayer gratuitement →</a>
-          <a href="https://ptidej.fr" class="cta-btn-secondary">En savoir plus</a>
+    <!-- FAQ -->
+    <section class="article-faq">
+      <h2>Questions fréquentes</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Comment lancer un rituel petit-déjeuner dans son équipe ?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Pas besoin d'annonce officielle. Proposez à 3 ou 4 collègues de partager un café vendredi
+            matin. Une fois que le rituel existe, un outil comme Ptidej peut gérer la rotation
+            automatiquement pour que tout le monde participe équitablement dès le départ.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Comment gérer les absences dans la rotation ?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Ptidej intègre la gestion des absences directement dans le planning. Quand un membre de
+            l'équipe est absent ou en congés, l'algorithme le passe automatiquement et redistribue
+            son tour sans aucune intervention manuelle.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Combien de personnes faut-il pour que ça vaille le coup ?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Dès 3 personnes, une rotation a du sens. Ptidej fonctionne pour des équipes de 3 à
+            50 personnes et plus. Plus l'équipe est grande, plus l'outil est utile pour éviter
+            les déséquilibres invisibles qui épuisent toujours les mêmes.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Est-ce vraiment gratuit ?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Oui, Ptidej est entièrement gratuit. Pas de carte bancaire requise, pas d'engagement,
+            pas de limite de membres dans l'équipe. Vous pouvez créer votre planning et le partager
+            immédiatement sans créer de compte.
+          </div>
         </div>
       </div>
+    </section>
 
-      <a href="/blog" class="back-link">← Retour au blog</a>
+    <div class="article-cta" style="margin-top: 3rem;">
+      <p>
+        <strong>Organisez vos petits-déjeuners d'équipe en 2 minutes.</strong><br />
+        Ptidej génère des plannings de rotation équitables, gère les absences et synchronise tout le monde en temps réel. Gratuit, sans engagement.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://app.ptidej.fr" class="cta-btn-primary">Essayer gratuitement →</a>
+        <a href="https://ptidej.fr" class="cta-btn-secondary">En savoir plus</a>
+      </div>
     </div>
+
+    <a href="/blog" class="back-link">← Retour au blog</a>
   </main>
 
   <!-- FOOTER -->
@@ -512,5 +846,22 @@ const dateDisplay = "15 juin 2026";
     </p>
     <p style="margin-top: 0.75rem;">© 2026 P'tit Déj — Fait avec ☕ en France</p>
   </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(el) {
+          el.classList.remove('open');
+          el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
