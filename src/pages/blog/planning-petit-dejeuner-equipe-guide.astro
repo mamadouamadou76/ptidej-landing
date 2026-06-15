@@ -1,0 +1,1005 @@
+---
+const title = "Comment organiser un planning de petit-déjeuner d'équipe équitable (guide complet) — P'tit Déj";
+const description = "Guide pratique pour mettre en place un planning de rotation équitable des petits-déjeuners en équipe : méthodes, outils, et erreurs à éviter.";
+const canonical = "https://ptidej.fr/blog/planning-petit-dejeuner-equipe-guide";
+const dateISO = "2026-06-15";
+const dateDisplay = "15 juin 2026";
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="P'tit Déj" />
+  <meta property="article:published_time" content={dateISO} />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="L'équipe Ptidej" />
+  <meta name="theme-color" content="#D97706" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Schema: BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Comment organiser un planning de petit-déjeuner d'équipe équitable (guide complet)",
+    "description": "Guide pratique pour mettre en place un planning de rotation équitable des petits-déjeuners en équipe : méthodes, outils, et erreurs à éviter.",
+    "url": "https://ptidej.fr/blog/planning-petit-dejeuner-equipe-guide",
+    "datePublished": "2026-06-15",
+    "inLanguage": "fr",
+    "author": {
+      "@type": "Organization",
+      "name": "L'équipe Ptidej",
+      "url": "https://ptidej.fr"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "P'tit Déj",
+      "url": "https://ptidej.fr"
+    },
+    "image": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1200&auto=format&fit=crop&q=80"
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Faut-il forcer tout le monde à participer au planning petit-déjeuner ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non — mais la transparence est clé. Si certains ne participent pas (raisons personnelles, alimentaires, etc.), c'est plus simple si c'est connu et accepté par l'équipe dès le départ, plutôt que découvert plus tard au fil des tours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment gérer une équipe en télétravail partiel ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le planning peut s'adapter aux jours de présence au bureau — un outil avec gestion des jours travaillés par semaine simplifie grandement cette configuration. Ptidej permet de définir les jours de présence de chaque membre."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de temps ça prend à mettre en place ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Avec un outil dédié comme Ptidej, configurer l'équipe complète (membres, jours, règles d'équité) prend environ 2 minutes. Pas de compte requis pour commencer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Que se passe-t-il si quelqu'un quitte l'équipe ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Avec un système automatisé, il suffit de retirer la personne de la liste — l'algorithme réajuste la rotation pour les membres restants automatiquement, sans recalcul manuel."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x5xj8iwm95");
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --amber-50:  #FFFBEB;
+      --amber-100: #FEF3C7;
+      --amber-200: #FDE68A;
+      --amber-400: #FBBF24;
+      --amber-500: #F59E0B;
+      --amber-600: #D97706;
+      --amber-700: #B45309;
+      --stone-50:  #FAFAF9;
+      --stone-100: #F5F5F4;
+      --stone-200: #E7E5E4;
+      --stone-400: #A8A29E;
+      --stone-600: #57534E;
+      --stone-700: #44403C;
+      --stone-900: #1C1917;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--stone-50);
+      color: var(--stone-900);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      background: rgba(250,250,249,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--stone-200);
+    }
+
+    .nav-logo {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--stone-900);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo-dot {
+      width: 8px; height: 8px;
+      background: var(--amber-500);
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-link {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--stone-700);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--amber-600); }
+    .nav-link.active { color: var(--amber-600); }
+
+    .nav-app-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      background: var(--amber-500);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .nav-app-btn:hover { background: var(--amber-600); transform: scale(1.02); }
+
+    /* ARTICLE */
+    .article-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 5rem;
+    }
+
+    .page-breadcrumb {
+      font-size: 0.8rem;
+      color: var(--stone-400);
+      margin-bottom: 2rem;
+    }
+
+    .page-breadcrumb a {
+      color: var(--amber-600);
+      text-decoration: none;
+    }
+    .page-breadcrumb a:hover { text-decoration: underline; }
+
+    .article-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--stone-200);
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--stone-400);
+      margin-bottom: 1rem;
+    }
+
+    .article-meta-dot {
+      width: 3px;
+      height: 3px;
+      background: var(--stone-400);
+      border-radius: 50%;
+    }
+
+    .article-title {
+      font-weight: 800;
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--stone-900);
+    }
+
+    /* AUTHOR */
+    .article-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--stone-600);
+      padding: 1rem 0 1.75rem;
+      border-bottom: 1px solid var(--stone-200);
+      margin-bottom: 2.5rem;
+    }
+
+    .article-author-avatar {
+      width: 36px;
+      height: 36px;
+      background: var(--amber-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* HERO IMAGE */
+    .article-hero {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .article-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* INLINE FIGURES */
+    .article-figure {
+      margin: 2.5rem 0;
+    }
+
+    .article-figure img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .article-figure figcaption {
+      font-size: 0.78rem;
+      color: var(--stone-400);
+      text-align: center;
+      margin-top: 0.6rem;
+    }
+
+    /* BODY */
+    .article-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--stone-700);
+    }
+
+    .article-body p {
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body h2 {
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: -0.015em;
+      color: var(--stone-900);
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .article-body ul {
+      margin: 0 0 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .article-body ul li {
+      line-height: 1.7;
+    }
+
+    .article-source {
+      display: inline;
+      color: var(--amber-600);
+      font-size: 0.9em;
+      text-decoration: none;
+      border-bottom: 1px dashed var(--amber-400);
+      transition: border-color 0.2s;
+    }
+    .article-source:hover { border-color: var(--amber-600); }
+
+    /* COMPARISON TABLE */
+    .method-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0 2rem;
+      font-size: 0.9rem;
+    }
+
+    .method-table th {
+      background: var(--stone-900);
+      color: var(--white);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .method-table th:first-child { border-radius: 8px 0 0 0; }
+    .method-table th:last-child { border-radius: 0 8px 0 0; }
+
+    .method-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--stone-200);
+      color: var(--stone-700);
+      vertical-align: top;
+    }
+
+    .method-table tr:last-child td { border-bottom: none; }
+    .method-table tr:nth-child(even) td { background: var(--stone-50); }
+
+    .tag-ok {
+      display: inline-block;
+      background: #D1FAE5;
+      color: #065F46;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .tag-warn {
+      display: inline-block;
+      background: #FEF3C7;
+      color: #92400E;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    /* STEPS */
+    .article-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 0 0 1.5rem;
+    }
+
+    .step {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: var(--amber-500);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .step-content strong {
+      display: block;
+      color: var(--stone-900);
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .step-content span {
+      font-size: 0.95rem;
+      color: var(--stone-600);
+    }
+
+    /* ERREURS BLOCK */
+    .errors-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin: 0 0 1.5rem;
+    }
+
+    .error-item {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      background: var(--white);
+      border: 1px solid var(--stone-200);
+      border-left: 3px solid #EF4444;
+      border-radius: 0 10px 10px 0;
+      padding: 0.85rem 1rem;
+    }
+
+    .error-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .error-item p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--stone-700);
+      line-height: 1.6;
+    }
+
+    /* FAQ */
+    .article-faq {
+      margin-top: 3rem;
+      border-top: 1px solid var(--stone-200);
+      padding-top: 2.5rem;
+    }
+
+    .article-faq h2 {
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: -0.015em;
+      color: var(--stone-900);
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--stone-200);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--stone-900);
+      transition: background 0.15s;
+    }
+
+    .faq-question:hover { background: var(--stone-50); }
+
+    .faq-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      background: var(--amber-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--amber-700);
+      transition: transform 0.2s;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      display: none;
+      padding: 1rem 1.25rem 1.1rem;
+      font-size: 0.95rem;
+      color: var(--stone-600);
+      line-height: 1.7;
+      border-top: 1px solid var(--stone-100);
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+
+    /* CTA BOX */
+    .article-cta {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: var(--amber-50);
+      border: 1px solid var(--amber-200);
+      border-left: 4px solid var(--amber-500);
+      border-radius: 0 16px 16px 0;
+    }
+
+    .article-cta p {
+      font-size: 0.95rem;
+      color: var(--stone-700);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .article-cta p:last-of-type { margin-bottom: 0; }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .cta-btn-primary {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      background: var(--amber-500);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.65rem 1.35rem;
+      border-radius: 12px;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .cta-btn-primary:hover { background: var(--amber-600); transform: scale(1.02); }
+
+    .cta-btn-secondary {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      background: var(--white);
+      color: var(--amber-700);
+      text-decoration: none;
+      padding: 0.65rem 1.35rem;
+      border-radius: 12px;
+      border: 1px solid var(--amber-200);
+      transition: border-color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .cta-btn-secondary:hover { border-color: var(--amber-400); background: var(--amber-50); }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--stone-400);
+      text-decoration: none;
+      margin-top: 3rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--amber-600); }
+
+    /* FOOTER */
+    footer {
+      background: var(--stone-900);
+      color: var(--stone-400);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      color: var(--stone-400);
+      text-decoration: none;
+      margin: 0 0.75rem;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: var(--amber-400); }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-app-btn { font-size: 0.78rem; padding: 0.5rem 0.9rem; }
+      .article-wrap { padding: 6rem 1.25rem 4rem; }
+      .article-cta { padding: 1.5rem; }
+      .method-table { font-size: 0.82rem; }
+      .method-table td, .method-table th { padding: 0.6rem 0.75rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-dot"></span>
+      P'tit Déj
+    </a>
+    <div class="nav-right">
+      <a href="/blog" class="nav-link active">Blog</a>
+      <a href="https://app.ptidej.fr" class="nav-app-btn">Accéder à l'app</a>
+    </div>
+  </nav>
+
+  <!-- ARTICLE -->
+  <main class="article-wrap">
+    <p class="page-breadcrumb">
+      <a href="/">Accueil</a> &rsaquo;
+      <a href="/blog">Blog</a> &rsaquo;
+      Guide planning petit-déjeuner
+    </p>
+
+    <header class="article-header">
+      <div class="article-meta">
+        <time datetime={dateISO}>{dateDisplay}</time>
+        <span class="article-meta-dot"></span>
+        <span>8 min de lecture</span>
+      </div>
+      <h1 class="article-title">Comment organiser un planning de petit-déjeuner d'équipe équitable (guide complet)</h1>
+    </header>
+
+    <div class="article-author">
+      <div class="article-author-avatar">☕</div>
+      <div>
+        <strong>L'équipe Ptidej</strong> — créateurs de P'tit Déj,
+        outil gratuit de planification équitable pour équipes.
+      </div>
+    </div>
+
+    <div class="article-hero">
+      <img
+        src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1200&auto=format&fit=crop&q=80"
+        alt="Carnet de notes et tasse de café sur un bureau en bois — planification d'un rituel d'équipe"
+        loading="eager"
+        width="1200"
+        height="525"
+      />
+    </div>
+
+    <div class="article-body">
+      <p>
+        Organiser un planning de petit-déjeuner d'équipe semble simple sur le papier — et pourtant,
+        c'est l'une de ces "petites organisations" qui finissent souvent par créer plus de friction que
+        prévu. Entre les oublis, les inégalités perçues, et la gestion des absences, ce qui devait être
+        un moment convivial peut vite devenir une source de tension silencieuse.
+      </p>
+
+      <p>
+        Voici un guide complet pour mettre en place un planning qui dure, sans drama.
+      </p>
+
+      <h2>Pourquoi un planning structuré change tout</h2>
+
+      <p>
+        Une <a class="article-source" href="https://www.gallup.com/workplace/236441/employee-recognition-low-cost-high-impact.aspx" target="_blank" rel="noopener noreferrer">étude Gallup sur la reconnaissance au travail</a>
+        montre que les petites attentions régulières entre collègues ont un impact mesurable sur
+        l'engagement et la satisfaction — bien plus que les grands événements ponctuels. Le petit-déjeuner
+        d'équipe en est un exemple parfait : low-cost, fréquent, et fédérateur.
+      </p>
+
+      <p>
+        Mais pour que ce rituel reste positif sur la durée, il a besoin d'un minimum de structure.
+        Sans ça, deux risques se matérialisent presque systématiquement : l'<strong>inéquité perçue</strong>
+        (toujours les mêmes qui apportent) et l'<strong>essoufflement</strong> (le rituel disparaît
+        progressivement, sans que personne ne le décide vraiment). Un planning clair élimine ces deux
+        risques à la racine.
+      </p>
+
+      <h2>Méthode 1 : Le planning manuel (tableur ou tableau papier)</h2>
+
+      <p>
+        C'est la méthode la plus simple pour démarrer : un tableau partagé (Google Sheets, tableau
+        blanc au bureau) où chaque semaine est attribuée à une personne. Zéro outil, mise en place
+        immédiate, visible par tous.
+      </p>
+
+      <figure class="article-figure">
+        <img
+          src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&auto=format&fit=crop&q=80"
+          alt="Tablette affichant un planning partagé sur Google Sheets, organisé par semaine et par personne"
+          loading="lazy"
+          width="800"
+          height="450"
+        />
+        <figcaption>Un simple tableur partagé suffit pour démarrer un planning de rotation. Photo : Unsplash</figcaption>
+      </figure>
+
+      <p>Les limites deviennent visibles dès que l'équipe dépasse 4-5 personnes :</p>
+
+      <ul>
+        <li>Quelqu'un doit penser à mettre le tableau à jour chaque semaine — et si cette personne est absente, personne ne sait qui est de tour.</li>
+        <li>Gérer les absences et congés devient vite compliqué : qui rattrape qui ? Sur quelle semaine ?</li>
+        <li>Aucune garantie d'équité réelle sur le long terme — sans suivi automatique, on perd vite la trace de "qui a fait quoi".</li>
+      </ul>
+
+      <p>
+        Pour une petite équipe de 3-4 personnes qui démarre, le tableur suffit largement.
+        Au-delà, les limites se font sentir rapidement et la charge de maintenance finit par
+        reposer sur une seule personne — exactement le problème qu'on cherchait à éviter.
+      </p>
+
+      <h2>Méthode 2 : La rotation automatique avec algorithme d'équité</h2>
+
+      <p>
+        L'idée ici est de laisser un système calculer automatiquement qui doit apporter le
+        petit-déjeuner, en tenant compte de l'historique (qui a déjà apporté, combien de fois)
+        et des absences (congés, RTT, déplacements).
+      </p>
+
+      <p>
+        C'est l'approche utilisée par des outils comme Ptidej : chaque membre de l'équipe a un
+        compteur de tours, l'algorithme priorise systématiquement les personnes ayant le moins
+        contribué récemment, et les absences sont automatiquement prises en compte sans recalcul
+        manuel.
+      </p>
+
+      <table class="method-table">
+        <thead>
+          <tr>
+            <th>Critère</th>
+            <th>Tableur manuel</th>
+            <th>Rotation automatique</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mise en place</td>
+            <td><span class="tag-ok">Immédiate</span></td>
+            <td><span class="tag-ok">2 minutes</span></td>
+          </tr>
+          <tr>
+            <td>Gestion des absences</td>
+            <td><span class="tag-warn">Manuelle</span></td>
+            <td><span class="tag-ok">Automatique</span></td>
+          </tr>
+          <tr>
+            <td>Équité garantie</td>
+            <td><span class="tag-warn">Approximative</span></td>
+            <td><span class="tag-ok">Calculée</span></td>
+          </tr>
+          <tr>
+            <td>Charge de maintenance</td>
+            <td><span class="tag-warn">Hebdomadaire</span></td>
+            <td><span class="tag-ok">Zéro</span></td>
+          </tr>
+          <tr>
+            <td>Idéal pour</td>
+            <td>3-4 personnes</td>
+            <td>3 à 50+ personnes</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Comment mettre en place votre planning en 4 étapes</h2>
+
+      <div class="article-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Définir le rythme</strong>
+            <span>
+              Tous les jours ? Une fois par semaine ? Le lundi pour bien démarrer la semaine est
+              un choix fréquent — mais adaptez selon la taille et les habitudes de votre équipe.
+              Pour une équipe de 8 personnes avec un rythme hebdomadaire, chacun est de tour
+              environ une fois toutes les deux mois.
+            </span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Lister les participants</strong>
+            <span>
+              Tout le monde participe-t-il, ou seulement les volontaires ? La transparence dès
+              le départ évite les malentendus plus tard. Si certains ont des contraintes
+              (allergies, régimes, budget), mieux vaut le clarifier collectivement une fois
+              pour toutes.
+            </span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Choisir le système de suivi</strong>
+            <span>
+              Tableur simple pour démarrer, ou outil dédié si l'équipe dépasse 5-6 personnes
+              et que la gestion manuelle devient pesante. Sur
+              <a class="article-source" href="https://app.ptidej.fr">app.ptidej.fr</a>,
+              l'import de l'équipe complète prend moins de 2 minutes.
+            </span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Prévoir la gestion des absences dès le départ</strong>
+            <span>
+              C'est souvent l'angle mort des plannings manuels. Décidez en amont : une personne
+              absente est-elle "sautée" pour cette semaine, ou rattrape-t-elle son tour plus
+              tard ? Un bon système doit gérer ça automatiquement sans intervention.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <h2>Les erreurs les plus fréquentes</h2>
+
+      <div class="errors-list">
+        <div class="error-item">
+          <span class="error-icon">⚠</span>
+          <p>
+            <strong>Ne pas formaliser dès le départ.</strong> "On s'arrangera entre nous" fonctionne...
+            jusqu'à ce que ça ne fonctionne plus. Six mois de rituel informel créent des habitudes
+            difficiles à recadrer.
+          </p>
+        </div>
+        <div class="error-item">
+          <span class="error-icon">⚠</span>
+          <p>
+            <strong>Oublier les nouveaux arrivants.</strong> S'ils n'ont jamais contribué, doivent-ils
+            "rattraper" ou démarrer à zéro dans la rotation ? À clarifier explicitement, sinon
+            le sujet devient source de gêne.
+          </p>
+        </div>
+        <div class="error-item">
+          <span class="error-icon">⚠</span>
+          <p>
+            <strong>Ne pas rendre le planning visible par toute l'équipe.</strong> Si seule une personne
+            sait "qui est de tour", ça crée une dépendance et des oublis. Le planning doit être
+            accessible à tous, à tout moment.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        L'article <a class="article-source" href="/blog/petites-attentions-bureau">Pourquoi les petites attentions au bureau comptent</a> explore
+        pourquoi ces rituels ont un impact aussi fort sur la cohésion d'équipe — si vous voulez
+        comprendre le "pourquoi" avant de passer au "comment".
+      </p>
+    </div>
+
+    <!-- FAQ -->
+    <section class="article-faq">
+      <h2>Questions fréquentes</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Faut-il forcer tout le monde à participer ?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Non — mais la transparence est clé. Si certains ne participent pas (raisons
+            personnelles, alimentaires, etc.), c'est plus simple si c'est connu et accepté
+            par l'équipe dès le départ, plutôt que découvert plus tard au fil des tours.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Comment gérer une équipe en télétravail partiel ?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Le planning peut s'adapter aux jours de présence au bureau — un outil avec
+            gestion des jours travaillés par semaine simplifie grandement cette configuration.
+            Ptidej permet de définir les jours de présence de chaque membre pour que la
+            rotation coïncide avec les jours où la personne est physiquement au bureau.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Combien de temps ça prend à mettre en place ?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Avec un outil dédié comme Ptidej, configurer l'équipe complète (membres, jours,
+            règles d'équité) prend environ 2 minutes. Pas de compte requis pour commencer —
+            vous pouvez partager le lien du planning avec votre équipe immédiatement.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Que se passe-t-il si quelqu'un quitte l'équipe ?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Avec un système automatisé, il suffit de retirer la personne de la liste —
+            l'algorithme réajuste la rotation pour les membres restants automatiquement,
+            sans recalcul manuel ni mise à jour du tableur.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="article-cta" style="margin-top: 3rem;">
+      <p>
+        <strong>Prêt à mettre en place un planning équitable pour votre équipe ?</strong><br />
+        Si vous voulez passer à la rotation automatique sans gérer manuellement un tableur,
+        Ptidej est gratuit et configurable en quelques minutes.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://app.ptidej.fr" class="cta-btn-primary">Créer mon planning →</a>
+        <a href="https://ptidej.fr" class="cta-btn-secondary">En savoir plus</a>
+      </div>
+    </div>
+
+    <a href="/blog" class="back-link">← Retour au blog</a>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/politique-de-confidentialite">Confidentialité</a>
+      <a href="mailto:contact@ptidej.fr">Contact</a>
+    </p>
+    <p style="margin-top: 0.75rem;">© 2026 P'tit Déj — Fait avec ☕ en France</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(el) {
+          el.classList.remove('open');
+          el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
