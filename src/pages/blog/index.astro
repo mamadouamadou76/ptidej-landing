@@ -11,6 +11,8 @@ const articles = [
     date: "15 juin 2026",
     dateISO: "2026-06-15",
     readingTime: "4 min",
+    cover: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&auto=format&fit=crop&q=80",
+    coverAlt: "Tasse de café sur une table en bois au soleil du matin",
   }
 ];
 ---
@@ -204,17 +206,35 @@ const articles = [
       background: var(--white);
       border: 1px solid var(--stone-200);
       border-radius: 16px;
-      padding: 2rem;
+      overflow: hidden;
       text-decoration: none;
       color: inherit;
       display: block;
       transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
     }
 
+    .article-card-body {
+      padding: 1.75rem 2rem 2rem;
+    }
+
+    .article-card-cover {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      object-fit: cover;
+      display: block;
+    }
+
     .article-card:hover {
       border-color: var(--amber-400);
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .article-card-cover {
+      transition: transform 0.3s ease;
+    }
+    .article-card:hover .article-card-cover {
+      transform: scale(1.02);
     }
 
     .article-meta {
@@ -286,7 +306,7 @@ const articles = [
       nav { padding: 1rem 1.25rem; }
       .nav-app-btn { font-size: 0.78rem; padding: 0.5rem 0.9rem; }
       .page-wrap { padding: 6rem 1.25rem 4rem; }
-      .article-card { padding: 1.5rem; }
+      .article-card-body { padding: 1.25rem 1.5rem 1.5rem; }
     }
   </style>
 </head>
@@ -315,14 +335,26 @@ const articles = [
     <div class="articles-list">
       {articles.map((article) => (
         <a href={`/blog/${article.slug}`} class="article-card">
-          <div class="article-meta">
-            <time datetime={article.dateISO}>{article.date}</time>
-            <span class="article-meta-dot"></span>
-            <span>{article.readingTime} de lecture</span>
+          {article.cover && (
+            <img
+              class="article-card-cover"
+              src={article.cover}
+              alt={article.coverAlt}
+              loading="lazy"
+              width="800"
+              height="350"
+            />
+          )}
+          <div class="article-card-body">
+            <div class="article-meta">
+              <time datetime={article.dateISO}>{article.date}</time>
+              <span class="article-meta-dot"></span>
+              <span>{article.readingTime} de lecture</span>
+            </div>
+            <h2 class="article-card-title">{article.title}</h2>
+            <p class="article-card-excerpt">{article.excerpt}</p>
+            <span class="article-read-more">Lire l'article →</span>
           </div>
-          <h2 class="article-card-title">{article.title}</h2>
-          <p class="article-card-excerpt">{article.excerpt}</p>
-          <span class="article-read-more">Lire l'article →</span>
         </a>
       ))}
     </div>
