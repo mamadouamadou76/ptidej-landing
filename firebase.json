@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "ptidej-landing",
+    "public": "dist/client",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
