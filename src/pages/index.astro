@@ -688,13 +688,8 @@ const ogImage = "https://ptidej.fr/og.png";
     </p>
 
     <div class="form-wrapper">
-      <form class="form-row" id="waitlist-form" novalidate>
-        <input type="email" name="email" id="email-input" placeholder="votre@email.fr" autocomplete="email" required aria-label="Votre adresse email" />
-        <button type="submit" class="btn-primary" id="submit-btn">Rejoindre gratuitement</button>
-      </form>
+      <a href="https://app.ptidej.fr" class="btn-primary">Accéder gratuitement →</a>
       <p class="form-note">🔒 Gratuit, sans carte bleue. Toujours.</p>
-      <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
-      <p class="app-link-hint">Déjà inscrit ? <a href="https://app.ptidej.fr" class="app-link">→ Accéder à l'app</a></p>
     </div>
   </section>
 
@@ -806,12 +801,8 @@ const ogImage = "https://ptidej.fr/og.png";
     <p>Rejoignez les équipes qui utilisent Ptidej pour des rotations équitables.</p>
 
     <div class="form-wrapper" style="margin: 0 auto;">
-      <form class="form-row" id="waitlist-form-2" novalidate>
-        <input type="email" name="email" id="email-input-2" placeholder="votre@email.fr" autocomplete="email" required aria-label="Votre adresse email" />
-        <button type="submit" class="btn-primary" id="submit-btn-2">Rejoindre gratuitement</button>
-      </form>
+      <a href="https://app.ptidej.fr" class="btn-primary">Accéder gratuitement →</a>
       <p class="form-note">🔒 Gratuit, sans carte bleue. Toujours.</p>
-      <p class="form-message" id="form-message-2" role="status" aria-live="polite"></p>
     </div>
   </section>
 
@@ -826,52 +817,6 @@ const ogImage = "https://ptidej.fr/og.png";
   </footer>
 
   <script>
-    async function handleSubmit(formEl, inputEl, btnEl, msgEl) {
-      const email = inputEl.value.trim();
-      if (!email || !email.includes('@')) {
-        msgEl.textContent = 'Saisissez une adresse email valide.';
-        msgEl.className = 'form-message error';
-        return;
-      }
-      btnEl.disabled = true;
-      btnEl.textContent = 'Inscription...';
-      msgEl.textContent = '';
-      msgEl.className = 'form-message';
-      try {
-        const res = await fetch('/api/waitlist', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
-        });
-        const data = await res.json();
-        if (data.success) {
-          msgEl.textContent = data.already
-            ? 'Vous étiez déjà inscrit(e) — nous vous préviendrons !'
-            : 'Parfait ! Vous avez accès à l\'application dès maintenant.';
-          msgEl.className = 'form-message success';
-          inputEl.value = '';
-        } else {
-          throw new Error(data.error || 'Erreur inconnue');
-        }
-      } catch (e) {
-        msgEl.textContent = 'Une erreur est survenue. Réessayez dans un instant.';
-        msgEl.className = 'form-message error';
-      } finally {
-        btnEl.disabled = false;
-        btnEl.textContent = 'Rejoindre gratuitement';
-      }
-    }
-
-    document.getElementById('waitlist-form').addEventListener('submit', e => {
-      e.preventDefault();
-      handleSubmit(e.currentTarget, document.getElementById('email-input'), document.getElementById('submit-btn'), document.getElementById('form-message'));
-    });
-
-    document.getElementById('waitlist-form-2').addEventListener('submit', e => {
-      e.preventDefault();
-      handleSubmit(e.currentTarget, document.getElementById('email-input-2'), document.getElementById('submit-btn-2'), document.getElementById('form-message-2'));
-    });
-
     // ── Carrousel screenshots ──────────────────────────────────────────────
     (function () {
       const slides = Array.from(document.querySelectorAll('.carousel-slide'));
